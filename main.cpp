@@ -148,14 +148,14 @@ struct Department
 /*
  8)
  */
- struct Cow
+ struct Cow FIXME clean up indentation
  {
-     int numSpots = 0;
-     bool goesMoo = true;
-     float gallonsMilk = 1.f;
+     int numSpots = 0; FIXME clean up indentation
+     bool goesMoo = true; FIXME clean up indentation
+     float gallonsMilk = 1.f; FIXME clean up indentation
 
-     void tipCow ( bool goesMoo, int numSpots );
- };
+     void tipCow ( bool goesMoo, int numSpots ); FIXME clean up indentation
+ }; FIXME clean up indentation
 /*
  9)
  */
