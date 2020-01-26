@@ -11,9 +11,51 @@ Create a branch named Part2
     you should be able to deduce the return type of those functions based on their usage in Person::run()
     You'll need to insert the Person struct from the video in the space below.
  */
+struct Person
+{   
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATscore;
+    int distanceTraveled;
 
+    struct Limb
+    {
+        int stepSize();
+        void stepForward();
+    };
 
+    void run( int howFast, bool startWithLeftFoot );
 
+    Limb leftFoot;
+    Limb rightFoot;
+};
+
+int Person::Limb::stepSize()
+{
+    return {};
+}
+
+void Person::Limb::stepForward()
+{
+
+}
+
+void Person::run( int howFast, bool startWithLeftFoot )
+{
+    if ( startWithLeftFoot == true )
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTraveled += leftFoot.stepSize() + rightFoot.stepSize();
+}
 
 
  /*
@@ -50,6 +92,11 @@ struct ArtWork
 
     Artist currentArtist;
 };
+
+void ArtWork::auctionArt ( Artist artist )
+{
+    artist.statusLiving = false;
+}
 /*
  2)
  */
@@ -70,6 +117,11 @@ struct Dissertation
 
     Advisor myAdvisor;
 };
+
+void Dissertation::assessDiss ( Advisor advisor )
+{
+    advisor.numPastAdvisees = 1;
+}
 /*
  3)
  */
@@ -78,10 +130,23 @@ struct Committee
     int numMembers = 0;
     bool femaleMembers = true;
     int topicCode = 3;
+    
 
     void populateMembers ( int numMembers, bool femaleMembers );
     void pickTopic ( int topicCode );
 };
+
+void Committee::populateMembers ( int numMembers, bool femaleMembers )
+{
+    if ( femaleMembers == false )
+    {
+        numMembers = 0;
+    }
+    else
+    {
+        numMembers = 1;
+    }
+}
 /*
  4)
  */
@@ -93,6 +158,14 @@ struct Article
 
     void readArticle ( int numPages );
 };
+
+void Article::readArticle ( int numPages )
+{
+    if ( numPages > 50 )
+    {
+        bool isInteresting = false;
+    }
+}
 /*
  5)
  */
@@ -101,9 +174,18 @@ struct MusicComposition
     int lengthMeasures = 0;
     float lengthTime = 0.f;
     bool composerAlive = true;
+    bool isBoring = false;
 
     void analyzeHarmony ( int lengthTime );
 };
+
+void MusicComposition::analyzeHarmony ( int lengthTime )
+{
+    if ( lengthTime > 20.0 )
+    {
+        bool isBoring = true;
+    }
+}
 /*
  6)
  */
@@ -116,6 +198,14 @@ struct Building
 
     void checkCodeViolations ( int purposeCode );
 };
+
+void Building::checkCodeViolations ( int purposeCode )
+{
+    if (purposeCode = 3)
+    {
+        bool isMuseum = true;
+    }
+}
 /*
  7)
  */
@@ -128,6 +218,18 @@ struct Department
 
     void admitStudents ( double annualBudget, int numStudents );
 };
+
+void Department::admitStudents ( double annualBudget, int numStudents )
+{
+    if ( annualBudget <= 1000000.00 )
+    {
+        int numFaculty = 25;
+    }
+    else
+    {
+        int numFaculty = 50;
+    }
+}
 /*
  8)
  */
@@ -139,6 +241,11 @@ struct Cow
 
     void tipCow ( bool goesMoo, int numSpots ); 
 };
+
+void Cow::tipCow ( bool goesMoo, int numSpots )
+{
+
+}
 /*
  9)
  */
@@ -148,9 +255,18 @@ struct Student
     float exitingGPA = 0.f;
     Dissertation myDissertation;
     bool isTA = true;
+    bool goToNextYear = true;
 
     void passStudent ( float exitingGPA );
 };
+
+void Student::passStudent ( float exitingGPA )
+{
+    if ( exitingGPA < 2.5 )
+    {
+        bool goToNextYear = false;
+    }
+}
 /*
  10)
  */
@@ -163,6 +279,12 @@ struct GraduateSchool
 
     void raiseEndowment ( Department department );
 };
+
+void GraduateSchool::raiseEndowment ( Department department )
+{
+    department.developsIP = true;
+}
+
 #include <iostream>
 int main()
 {
