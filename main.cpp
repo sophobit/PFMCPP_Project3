@@ -163,7 +163,7 @@ void Article::readArticle ( int numPages )
 {
     if ( numPages > 50 )
     {
-        bool isInteresting = false;
+        Article::isInteresting = false;
     }
 }
 /*
@@ -183,7 +183,7 @@ void MusicComposition::analyzeHarmony ( int lengthTime )
 {
     if ( lengthTime > 20.0 )
     {
-        bool isBoring = true;
+        MusicComposition::isBoring = true;
     }
 }
 /*
@@ -201,9 +201,9 @@ struct Building
 
 void Building::checkCodeViolations ( int purposeCode )
 {
-    if (purposeCode = 3)
+    if ( purposeCode == 3 )
     {
-        bool isMuseum = true;
+        Building::isMuseum = true;
     }
 }
 /*
@@ -223,11 +223,11 @@ void Department::admitStudents ( double annualBudget, int numStudents )
 {
     if ( annualBudget <= 1000000.00 )
     {
-        int numFaculty = 25;
+        Department::numFaculty = 25;
     }
     else
     {
-        int numFaculty = 50;
+        Department::numFaculty = 50;
     }
 }
 /*
@@ -252,19 +252,19 @@ void Cow::tipCow ( bool goesMoo, int numSpots )
 struct Student
 {
     float enteringGPA = 0.f;
-    float exitingGPA = 0.f;
+    double exitingGPA = 0.0;
     Dissertation myDissertation;
     bool isTA = true;
     bool goToNextYear = true;
 
-    void passStudent ( float exitingGPA );
+    void passStudent ( double exitingGPA );
 };
 
-void Student::passStudent ( float exitingGPA )
+void Student::passStudent ( double exitingGPA )
 {
     if ( exitingGPA < 2.5 )
     {
-        bool goToNextYear = false;
+        Student::goToNextYear = false;
     }
 }
 /*
