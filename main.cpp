@@ -42,9 +42,9 @@ void Person::Limb::stepForward()
 
 }
 
-void Person::run( int howFast, bool startWithLeftFoot )
+void Person::run( int howFast2, bool startWithLeftFoot2 )
 {
-    if ( startWithLeftFoot == true )
+    if ( startWithLeftFoot2 == true )
     {
         leftFoot.stepForward();
         rightFoot.stepForward();
@@ -55,6 +55,7 @@ void Person::run( int howFast, bool startWithLeftFoot )
         leftFoot.stepForward();
     }
     distanceTraveled += leftFoot.stepSize() + rightFoot.stepSize();
+
 }
 
 
@@ -130,21 +131,20 @@ struct Committee
     int numMembers = 0;
     bool femaleMembers = true;
     int topicCode = 3;
-    
 
     void populateMembers ( int numMembers, bool femaleMembers );
     void pickTopic ( int topicCode );
 };
 
-void Committee::populateMembers ( int numMembers, bool femaleMembers )
+void Committee::populateMembers ( int numMembersHere, bool femaleMembersHere )
 {
-    if ( femaleMembers == false )
+    if ( femaleMembersHere == false )
     {
-        numMembers = 0;
+        numMembersHere = 0;
     }
     else
     {
-        numMembers = 1;
+        numMembersHere = 1;
     }
 }
 /*
@@ -159,9 +159,9 @@ struct Article
     void readArticle ( int numPages );
 };
 
-void Article::readArticle ( int numPages )
+void Article::readArticle ( int numPages2 )
 {
-    if ( numPages > 50 )
+    if ( numPages2 > 50 )
     {
         Article::isInteresting = false;
     }
@@ -179,9 +179,9 @@ struct MusicComposition
     void analyzeHarmony ( int lengthTime );
 };
 
-void MusicComposition::analyzeHarmony ( int lengthTime )
+void MusicComposition::analyzeHarmony ( int lengthTime2 )
 {
-    if ( lengthTime > 20.0 )
+    if ( lengthTime2 > 20.0 )
     {
         MusicComposition::isBoring = true;
     }
@@ -199,9 +199,9 @@ struct Building
     void checkCodeViolations ( int purposeCode );
 };
 
-void Building::checkCodeViolations ( int purposeCode )
+void Building::checkCodeViolations ( int purposeCode2 )
 {
-    if ( purposeCode == 3 )
+    if ( purposeCode2 == 3 )
     {
         Building::isMuseum = true;
     }
@@ -219,7 +219,7 @@ struct Department
     void admitStudents ( double annualBudget, int numStudents );
 };
 
-void Department::admitStudents ( double annualBudget, int numStudents )
+void Department::admitStudents ( double annualBudget2, int numStudents2 )
 {
     if ( annualBudget <= 1000000.00 )
     {
@@ -242,7 +242,7 @@ struct Cow
     void tipCow ( bool goesMoo, int numSpots ); 
 };
 
-void Cow::tipCow ( bool goesMoo, int numSpots )
+void Cow::tipCow ( bool goesMoo2, int numSpots2 )
 {
 
 }
@@ -260,7 +260,7 @@ struct Student
     void passStudent ( double exitingGPA );
 };
 
-void Student::passStudent ( double exitingGPA )
+void Student::passStudent ( double exitingGPA2 )
 {
     if ( exitingGPA < 2.5 )
     {
@@ -280,7 +280,7 @@ struct GraduateSchool
     void raiseEndowment ( Department department );
 };
 
-void GraduateSchool::raiseEndowment ( Department department )
+void GraduateSchool::raiseEndowment ( Department department2 )
 {
     department.developsIP = true;
 }
