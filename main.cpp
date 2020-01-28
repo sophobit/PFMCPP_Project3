@@ -42,7 +42,7 @@ void Person::Limb::stepForward()
 
 }
 
-void Person::run( int howFast2, bool startWithLeftFoot2 )
+void Person::run( int, bool startWithLeftFoot2 )
 {
     if ( startWithLeftFoot2 == true )
     {
@@ -219,7 +219,7 @@ struct Department
     void admitStudents ( double annualBudget, int numStudents );
 };
 
-void Department::admitStudents ( double annualBudget2, int numStudents2 )
+void Department::admitStudents ( double, int )
 {
     if ( annualBudget <= 1000000.00 )
     {
@@ -242,7 +242,7 @@ struct Cow
     void tipCow ( bool goesMoo, int numSpots ); 
 };
 
-void Cow::tipCow ( bool goesMoo2, int numSpots2 )
+void Cow::tipCow ( bool, int )
 {
 
 }
@@ -260,7 +260,7 @@ struct Student
     void passStudent ( double exitingGPA );
 };
 
-void Student::passStudent ( double exitingGPA2 )
+void Student::passStudent ( double )
 {
     if ( exitingGPA < 2.5 )
     {
@@ -280,7 +280,7 @@ struct GraduateSchool
     void raiseEndowment ( Department department );
 };
 
-void GraduateSchool::raiseEndowment ( Department department2 )
+void GraduateSchool::raiseEndowment ( Department )
 {
     department.developsIP = true;
 }
