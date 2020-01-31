@@ -50,78 +50,53 @@ int main()
 //insert Example::main() into main() of user's repo.
 
 
-
 /*
  1)
  */
 struct ArtWork
 {
-    int mediumCode = 1;
-    int materialsCode = 1;
-    double priceOfArt = 100.00;
-
-    struct Artist
-    {
-        bool statusLiving = true;
-        float yearsActive = 20.0;
-    };
-
-    void auctionArt ( Artist artist );
-
-    Artist currentArtist;
+    double currentPrice;
+    ArtWork() { currentPrice = 0; }
+    double newPrice ( double, int );
 };
 
-void ArtWork::auctionArt ( Artist artist )
+double ArtWork::newPrice ( double oldPrice, int yearsOwned )
 {
-    artist.statusLiving = false;
+    return oldPrice * yearsOwned;
 }
+
 /*
  2)
  */
-struct Dissertation
+struct Diss
 {
-    int length = 200;
-    bool isDone = false;
-    float timeWorkedOn = 2.f;
-
-    struct Advisor
+    int length = 0;
+    Diss() { length = 200; }
+    void printLength()
     {
-        bool isMale = true;
-        int numPastAdvisees = 0;
-    };
-
-    void checkDiss ( int length, float timeWorkedOn );
-    void assessDiss ( Advisor advisor );
-
-    Advisor myAdvisor;
+        std::cout << "The length of the dissertation is " << length << " pages." << std::endl;
+    }
 };
-
-void Dissertation::assessDiss ( Advisor advisor )
-{
-    advisor.numPastAdvisees = 1;
-}
 /*
  3)
  */
 struct Committee
 {
-    int numMembers = 0;
-    bool femaleMembers = true;
-    int topicCode = 3;
-
-    void populateMembers ( int numMembers, bool femaleMembers );
-    void pickTopic ( int topicCode );
+    int numMembers;
+    Committee() { numMembers = 5; }
+    void status ( int numFemaleMembers );
 };
 
-void Committee::populateMembers ( int numMembersHere, bool femaleMembersHere )
+void Committee::status ( int femaleMembers )
 {
-    if ( femaleMembersHere == false )
+    std::cout << "The committee has " << numMembers << " members, ";
+    if ( femaleMembers == 0 )
     {
-        numMembersHere = 0;
+        std::cout << "but no female members." << std::endl;
     }
     else
     {
-        numMembersHere = 1;
+        std::cout << "including " << femaleMembers << " women."  << std::endl;
     }
 }
 /*
@@ -129,82 +104,71 @@ void Committee::populateMembers ( int numMembersHere, bool femaleMembersHere )
  */
 struct Article
 {
-    int numPages = 0;
-    bool isInteresting = false;
-    int publisherCode = 0;
-
-    void readArticle ( int numPages );
+    int submitAttempts;
+    Article() { submitAttempts = 5; }
+    void printSubmitRatio ( int totalJournals );
 };
 
-void Article::readArticle ( int numPages2 )
+void Article::printSubmitRatio ( int totalNumber )
 {
-    if ( numPages2 > 50 )
-    {
-        Article::isInteresting = false;
-    }
+    std::cout << "Out of " << totalNumber << " existing journals, the Article was submitted to " << submitAttempts << " journals." << std::endl; 
 }
 /*
  5)
  */
 struct MusicComposition
 {
-    int lengthMeasures = 0;
-    float lengthTime = 0.f;
-    bool composerAlive = true;
-    bool isBoring = false;
-
-    void analyzeHarmony ( int lengthTime );
+    int numInstruments = 10;
+    MusicComposition() { numInstruments = 5; }
+    void analyzeInterest ( int lengthInMinutes );
 };
 
-void MusicComposition::analyzeHarmony ( int lengthTime2 )
+void MusicComposition::analyzeInterest ( int numMinutes )
 {
-    if ( lengthTime2 > 20.0 )
+    if ( numMinutes > 15 )
     {
-        MusicComposition::isBoring = true;
+        std::cout << "This piece with " << numInstruments << " instruments is boring." << std::endl;
+    }
+    else
+    {
+        std::cout << "This piece with " << numInstruments << " instruments is not boring." << std::endl;
     }
 }
+
+
 /*
  6)
  */
 struct Building
 {
-    int purposeCode = 0;
-    double costToBuild = 1.0;
-    bool isMuseum = false;
-    int architectCode = 0;
-
-    void checkCodeViolations ( int purposeCode );
+    double costToBuild = 1.00;
+    Building() { costToBuild = 400000.00; }
+    void printCost();
 };
 
-void Building::checkCodeViolations ( int purposeCode2 )
+void Building::printCost()
 {
-    if ( purposeCode2 == 3 )
-    {
-        Building::isMuseum = true;
-    }
+    std::cout << "Building::printCost() " << costToBuild << std::endl;
 }
 /*
  7)
  */
 struct Department
 {
-    int numStudents = 0;
-    int numFaculty = 0;
     double annualBudget = 100.00;
-    bool developsIP = false;
-
-    void admitStudents ( double annualBudget, int numStudents );
+    Department() { annualBudget = 100000.00; }
+    void chooseBudget ( bool );
 };
 
-void Department::admitStudents ( double, int )
+void Department::chooseBudget ( bool developsIP )
 {
-    if ( annualBudget <= 1000000.00 )
+    if ( developsIP == true )
     {
-        Department::numFaculty = 25;
+        std::cout << "The annualBudget is " << annualBudget * 2 << std::endl;
     }
     else
     {
-        Department::numFaculty = 50;
+        std::cout << "The annualBudget is " << annualBudget << std::endl;
     }
 }
 /*
@@ -212,59 +176,76 @@ void Department::admitStudents ( double, int )
  */
 struct Cow
 {
-    int numSpots = 0;
-    bool goesMoo = true;
-    float gallonsMilk = 1.f;
-
-    void tipCow ( bool goesMoo, int numSpots ); 
+    int numSpots;
+    Cow() { numSpots = 6; }
+    void tipCow ( bool goesMoo ); 
 };
 
-void Cow::tipCow ( bool, int )
+void Cow::tipCow ( bool moo )
 {
-
+    if ( moo == true )
+    {
+        std::cout << "The cow with " << numSpots << " spots has mooed, it shall be tipped." << std::endl;
+    }
+    else
+    {
+       std::cout << "The cow with " << numSpots << " spots has not mooed, it shall not be tipped." << std::endl;
+    }
 }
 /*
  9)
  */
 struct Student
 {
-    float enteringGPA = 0.f;
-    double exitingGPA = 0.0;
-    Dissertation myDissertation;
-    bool isTA = true;
-    bool goToNextYear = true;
-
-    void passStudent ( double exitingGPA );
+    float enteringGPA = 0.0f;
+    Student() { enteringGPA = 3.4f; }
+    void printGPA();
 };
 
-void Student::passStudent ( double )
+void Student::printGPA()
 {
-    if ( exitingGPA < 2.5 )
-    {
-        Student::goToNextYear = false;
-    }
+    std::cout << "Student::printGPA() is " << enteringGPA << std::endl;
 }
 /*
  10)
  */
-struct GraduateSchool
+struct GradSchool
 {
-    Student student;
-    Department department;
-    Dissertation dissertation;
-    Cow myCow;
-
-    void raiseEndowment ( Department department );
+    int numApplicants;
+    GradSchool() { numApplicants = 1000; }
+    void printStatus ( int );
 };
 
-void GraduateSchool::raiseEndowment ( Department )
+void GradSchool::printStatus( int numAccepted )
 {
-    department.developsIP = true;
+    std::cout << "Out of " << numApplicants << " applicants, " << numAccepted << " were accepted." << std::endl;
 }
+
 
 #include <iostream>
 int main()
 {
     Example::main();
+    ArtWork mondrian;
+    auto result1 = mondrian.newPrice( 4000.00, 5 );
+    std::cout << "ArtWork::newPrice(): " << result1 << std::endl;
+    Diss diss;
+    diss.printLength();
+    Committee committee;
+    committee.status( 2 );
+    Article article;
+    article.printSubmitRatio(85);
+    MusicComposition composition;
+    composition.analyzeInterest(21);
+    Building home;
+    home.printCost();
+    Department biology;
+    biology.chooseBudget(true);
+    Cow bessy;
+    bessy.tipCow(true);
+    Student dave;
+    dave.printGPA();
+    GradSchool ucla;
+    ucla.printStatus(200);
     std::cout << "good to go!" << std::endl;
 }
